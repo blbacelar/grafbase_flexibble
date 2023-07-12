@@ -62,10 +62,10 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
         ))}
       </section>
 
-      <LoadMore
-        startCursor={data?.projectSearch?.pageInfo?.startCursor}
-        endCursor={data?.projectSearch?.pageInfo?.endCursor}
-        hasPreviousPage={data?.projectSearch?.pageInfo?.hasPreviousPage}
+      <LoadMore 
+        startCursor={data?.projectSearch?.pageInfo?.startCursor} 
+        endCursor={data?.projectSearch?.pageInfo?.endCursor} 
+        hasPreviousPage={data?.projectSearch?.pageInfo?.hasPreviousPage} 
         hasNextPage={data?.projectSearch?.pageInfo.hasNextPage}
       />
     </section>

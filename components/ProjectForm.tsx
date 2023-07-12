@@ -1,15 +1,15 @@
 "use client"
 
 import Image from 'next/image';
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { ChangeEvent, FormEvent, useState } from 'react';
 
-import { FormState, ProjectInterface, SessionInterface } from '@/common.types';
-import { categoryFilters } from '@/constants';
-import { createNewProject, fetchToken, updateProject } from '@/lib/actions';
+import FormField from './FormField';
 import Button from './Button';
 import CustomMenu from './CustomMenu';
-import FormField from './FormField';
+import { categoryFilters } from '@/constant';
+import { updateProject, createNewProject, fetchToken } from '@/lib/actions';
+import { FormState, ProjectInterface, SessionInterface } from '@/common.types';
 
 type Props = {
     type: string,
@@ -71,7 +71,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
 
                 router.push("/")
             }
-
+            
             if (type === "edit") {
                 await updateProject(form, project?.id as string, token)
 
@@ -137,7 +137,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
                 type="url"
                 title="GitHub URL"
                 state={form.githubUrl}
-                placeholder="https://github.com/blbacelar"
+                placeholder="https://github.com/adrianhajdin"
                 setState={(value) => handleStateChange('githubUrl', value)}
             />
 

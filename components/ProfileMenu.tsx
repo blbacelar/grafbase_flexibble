@@ -1,10 +1,10 @@
 "use client"
 
-import { Menu, Transition } from "@headlessui/react";
-import { signOut } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { signOut } from "next-auth/react";
 import { Fragment, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
 
 import { SessionInterface } from "@/common.types";
 

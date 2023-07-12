@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
 
+import { createProjectMutation, createUserMutation, deleteProjectMutation, updateProjectMutation, getProjectByIdQuery, getProjectsOfUserQuery, getUserQuery, projectsQuery } from "@/graphql";
 import { ProjectForm } from "@/common.types";
-import { createProjectMutation, createUserMutation, deleteProjectMutation, getProjectByIdQuery, getProjectsOfUserQuery, getUserQuery, projectsQuery, updateProjectMutation } from "@/graphql";
 
 const isProduction = process.env.NODE_ENV === 'production';
 const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || '' : 'http://127.0.0.1:4000/graphql';
@@ -54,11 +54,11 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
     client.setHeader("Authorization", `Bearer ${token}`);
 
     const variables = {
-      input: {
-        ...form,
-        image: imageUrl.url,
-        createdBy: {
-          link: creatorId
+      input: { 
+        ...form, 
+        image: imageUrl.url, 
+        createdBy: { 
+          link: creatorId 
         }
       }
     };
@@ -115,7 +115,7 @@ export const createUser = (name: string, email: string, avatarUrl: string) => {
       avatarUrl: avatarUrl
     },
   };
-
+  
   return makeGraphQLRequest(createUserMutation, variables);
 };
 
