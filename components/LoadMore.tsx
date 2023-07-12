@@ -16,18 +16,18 @@ const LoadMore = ({ startCursor, endCursor, hasPreviousPage, hasNextPage }: Prop
 
     const handleNavigation = (type: string) => {
         const currentParams = new URLSearchParams(window.location.search);
-        
+
         if (type === "prev" && hasPreviousPage) {
-            currentParams.delete("endcursor");
-            currentParams.set("startcursor", startCursor);
+            currentParams.delete("endCursor");
+            currentParams.set("startCursor", startCursor);
         } else if (type === "next" && hasNextPage) {
-            currentParams.delete("startcursor");
-            currentParams.set("endcursor", endCursor);
+            currentParams.delete("startCursor");
+            currentParams.set("endCursor", endCursor);
         }
-    
+
         const newSearchParams = currentParams.toString();
         const newPathname = `${window.location.pathname}?${newSearchParams}`;
-    
+
         router.push(newPathname);
     };
 

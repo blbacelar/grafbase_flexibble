@@ -6,7 +6,7 @@ import { fetchAllProjects } from "@/lib/actions";
 
 type SearchParams = {
   category?: string | null;
-  endcursor?: string | null;
+  endCursor?: string | null;
 }
 
 type Props = {
@@ -29,8 +29,8 @@ export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 export const revalidate = 0;
 
-const Home = async ({ searchParams: { category, endcursor } }: Props) => {
-  const data = await fetchAllProjects(category, endcursor) as ProjectSearch
+const Home = async ({ searchParams: { category, endCursor } }: Props) => {
+  const data = await fetchAllProjects(category, endCursor) as ProjectSearch
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
@@ -62,10 +62,10 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
         ))}
       </section>
 
-      <LoadMore 
-        startCursor={data?.projectSearch?.pageInfo?.startCursor} 
-        endCursor={data?.projectSearch?.pageInfo?.endCursor} 
-        hasPreviousPage={data?.projectSearch?.pageInfo?.hasPreviousPage} 
+      <LoadMore
+        startCursor={data?.projectSearch?.pageInfo?.startCursor}
+        endCursor={data?.projectSearch?.pageInfo?.endCursor}
+        hasPreviousPage={data?.projectSearch?.pageInfo?.hasPreviousPage}
         hasNextPage={data?.projectSearch?.pageInfo.hasNextPage}
       />
     </section>
